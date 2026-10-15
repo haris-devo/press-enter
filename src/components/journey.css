@@ -73,9 +73,9 @@
   grid-auto-flow: column;
   gap: 18px;
   border: 0;
-  background: rgba(246, 245, 251, 0.55);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  background: rgba(246, 245, 251, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   font-size: clamp(1.2rem, 2.4vw, 1.7rem);
   font-weight: 620;
   font-variation-settings: 'ROND' 100;
