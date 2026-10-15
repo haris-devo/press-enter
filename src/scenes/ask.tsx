@@ -124,7 +124,7 @@ export function ServerScene({ t, mode, d }: SceneProps) {
       <Bubble x={edge[0]} y={196} text={kid ? 'Do I have a copy?' : 'Cache lookup'} o={fadeIn(t, 0.13, 0.03) * (1 - seg(t, 0.22, 0.26))} size={17} />
       <g opacity={1 - seg(t, 0.74, 0.78)}>
         <Cross x={edge[0] + 50} y={250} o={miss} r={15} />
-        <Pill x={edge[0]} y={196} text={kid ? 'Not yet' : 'Cache MISS'} o={fadeIn(t, 0.22, 0.03) * (1 - seg(t, 0.36, 0.4))} bg={PAL.bad} color={PAL.white} size={16} />
+        <Pill x={edge[0]} y={196} text={kid ? 'Not yet' : 'Cache MISS'} o={fadeIn(t, 0.26, 0.03) * (1 - seg(t, 0.36, 0.4))} bg={PAL.bad} color={PAL.white} size={16} />
       </g>
       {toOrigin > 0 && toOrigin < 1 && <Envelope x={bx} y={by} color={PAL.ask} s={0.7} seal />}
 

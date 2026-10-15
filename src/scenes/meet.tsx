@@ -123,9 +123,9 @@ export function TlsScene({ t, mode, d }: SceneProps) {
       <Buddy x={120} y={290} look={check > 0 && check < 1 ? 1 : 1} mood={lock > 0 ? 'happy' : 'wow'} label="Browser" lock={lock >= 1} />
       <Shop x={680} y={346} color={PAL.meet} soft={PAL.meetSoft} sign={shorten(d.host, 16)} label={kid ? 'The shop' : 'Server'} />
 
-      <Bubble x={120} y={196} text={kid ? "Hi! Let's make a secret code" : 'ClientHello + key share'} o={fadeIn(t, 0.02, 0.04) * (1 - seg(t, 0.27, 0.31))} size={kid ? 17 : 18} />
+      <Bubble x={152} y={196} text={kid ? "Hi! Let's make a secret code" : 'ClientHello + key share'} o={fadeIn(t, 0.02, 0.04) * (1 - seg(t, 0.27, 0.31))} size={kid ? 17 : 18} />
       <Bubble x={680} y={152} text={kid ? "Here's my ID card!" : 'ServerHello, Certificate, Finished'} o={fadeIn(t, 0.28, 0.04) * (1 - seg(t, 0.5, 0.54))} size={kid ? 17 : 16} />
-      <Bubble x={120} y={196} text={kid ? 'Great, the code is ready!' : 'Finished'} o={fadeIn(t, 0.66, 0.04) * (1 - seg(t, 0.84, 0.88))} size={kid ? 17 : 18} />
+      <Bubble x={150} y={196} text={kid ? 'Great, the code is ready!' : 'Finished'} o={fadeIn(t, 0.71, 0.04) * (1 - seg(t, 0.86, 0.9))} size={kid ? 17 : 18} />
 
       {hello > 0 && hello < 1 && (
         <g>
@@ -146,7 +146,7 @@ export function TlsScene({ t, mode, d }: SceneProps) {
           <path d="M 16 16 L 32 32" stroke={PAL.meet} strokeWidth={7} strokeLinecap="round" />
         </g>
       )}
-      <Pill x={250} y={214} text={kid ? 'Signed by someone I trust' : 'Chain ends at a trusted root CA'} o={fadeIn(t, 0.64, 0.04) * (1 - seg(t, 0.84, 0.9))} bg={PAL.good} color={PAL.white} size={15} />
+      <Pill x={250} y={214} text={kid ? 'Signed by someone I trust' : 'Chain ends at a trusted root CA'} o={fadeIn(t, 0.6, 0.04) * (1 - seg(t, 0.67, 0.71))} bg={PAL.good} color={PAL.white} size={15} />
 
       {finish > 0 && finish < 1 && <Envelope x={fx} y={fy} color={PAL.meet} s={0.85} seal />}
 

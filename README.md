@@ -27,6 +27,21 @@ src/components/  one component and stylesheet per section
 
 The speed lab is a model with round numbers (`src/engine/trip.ts`) and its lessons are covered by tests. Use your browser's dev tools or WebPageTest for real measurements.
 
+## The film
+
+`video/` is a 3:40 motion explainer built from the same scenes as the site (episode 4 of my Frontend Unpacked series). Each scene is time-warped so its moments land on the narrator's words, and a virtual camera pushes in, follows packets and pulls back.
+
+- `video/src/script.ts` is the narration, one beat per line, with how each line should be delivered.
+- `video/src/shots.ts` pins every scene to the voice (`anchors`) and moves the camera over it (`cam`).
+- `video/src/timeline.ts` reads the recorded word timings (`words.ts`), so captions and headlines follow the voice.
+
+```bash
+npx vite --config video/vite.config.ts         # preview with a scrubber at http://localhost:5185
+npx vite build --config video/vite.config.ts   # static build for the frame renderer
+```
+
+Voice, music and rendering run in my local studio pipeline: frames are stepped through `window.seek(t)` in headless Chrome and encoded with ffmpeg.
+
 ## Run it
 
 ```bash
