@@ -3,7 +3,7 @@
  * map it onto the same chapters the journey uses.
  */
 
-export type RealPhaseId = 'redirect' | 'cache' | 'dns' | 'connect' | 'tls' | 'wait' | 'download' | 'build' | 'paint';
+export type RealPhaseId = 'redirect' | 'cache' | 'dns' | 'connect' | 'tls' | 'wait' | 'download' | 'build';
 
 export interface RealPhase {
   id: RealPhaseId;
@@ -13,7 +13,7 @@ export interface RealPhase {
 
 export interface RealTrip {
   phases: RealPhase[];
-  /** First Contentful Paint, when the browser reported it. */
+  /** First Contentful Paint, a moment rather than a span. Null when the browser has not painted (a hidden tab). */
   firstPaint: number | null;
   /** When the page finished loading (loadEventEnd), or when it became interactive if load is not done yet. */
   done: number;
@@ -61,8 +61,6 @@ export function readTrip(t: NavTiming, firstPaint: number | null): RealTrip {
   add('wait', t.requestStart, t.responseStart);
   add('download', t.responseStart, t.responseEnd);
   add('build', t.responseEnd, t.domInteractive);
-  const paintEnd = firstPaint && firstPaint > t.domInteractive ? firstPaint : t.domInteractive;
-  add('paint', t.domInteractive, paintEnd);
 
   const done = Math.max(t.loadEventEnd, t.domContentLoadedEventEnd, t.domInteractive, firstPaint ?? 0);
   const dns = t.domainLookupEnd - t.domainLookupStart;

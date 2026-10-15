@@ -13,7 +13,6 @@ const NAMES: Record<RealPhaseId, { kid: string; pro: string; act: string }> = {
   wait: { kid: 'Asked and waited', pro: 'Waiting for first byte', act: 'ask' },
   download: { kid: 'Brought it home', pro: 'Download', act: 'ask' },
   build: { kid: 'Read the instructions', pro: 'Parse until interactive', act: 'build' },
-  paint: { kid: 'First colours on screen', pro: 'Until first paint', act: 'draw' },
 };
 
 const OPTIONAL: RealPhaseId[] = ['redirect', 'cache'];
@@ -52,7 +51,7 @@ export function RealTrip({ mode }: { mode: Mode }) {
   }, []);
 
   const rows = trip ? trip.phases.filter((p) => !OPTIONAL.includes(p.id) || p.ms >= 1) : [];
-  const end = trip ? Math.max(1, ...trip.phases.map((p) => p.start + p.ms)) : 1;
+  const end = trip ? Math.max(1, trip.firstPaint ?? 0, ...trip.phases.map((p) => p.start + p.ms)) : 1;
 
   return (
     <section className="section" id="yours" aria-labelledby="yours-title">
@@ -87,6 +86,15 @@ export function RealTrip({ mode }: { mode: Mode }) {
                     </div>
                   );
                 })}
+                {trip.firstPaint !== null && (
+                  <div className="yr yr-moment" data-act="draw">
+                    <span className="yr-name">{kid ? 'First colours on screen' : 'First Contentful Paint'}</span>
+                    <span className="yr-track">
+                      <i style={{ left: `${(trip.firstPaint / end) * 100}%` }} />
+                    </span>
+                    <b className="tabular">at {Math.round(trip.firstPaint)} ms</b>
+                  </div>
+                )}
               </div>
               <dl className="yours-facts">
                 <div>

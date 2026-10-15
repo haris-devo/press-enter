@@ -30,7 +30,8 @@ describe('readTrip', () => {
     expect(ms.wait).toBe(69);
     expect(ms.download).toBe(30);
     expect(ms.build).toBe(70);
-    expect(ms.paint).toBe(40);
+    expect(ms.paint).toBeUndefined();
+    expect(t.firstPaint).toBe(300);
     expect(t.done).toBe(420);
     expect(t.reused).toBe(false);
     expect(t.protocol).toBe('h2');

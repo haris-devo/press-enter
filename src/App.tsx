@@ -41,7 +41,7 @@ export default function App() {
 
   return (
     <>
-      <a className="sr-only" href="#journey">
+      <a className="skip" href="#player">
         Skip to the trip
       </a>
       <Nav mode={mode} onMode={changeMode} />

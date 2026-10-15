@@ -261,3 +261,20 @@ pre {
     scroll-behavior: auto !important;
   }
 }
+
+/* Skip link: hidden until a keyboard user reaches it */
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 50;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip:focus {
+  top: 12px;
+}
